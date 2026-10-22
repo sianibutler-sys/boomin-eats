@@ -42,7 +42,7 @@ Until the variables are set, the form falls back to opening an email to hello@bo
 
 ## Updating the truck menu
 
-Prices and items live in the `#truck` section of `index.html`. The drop banner date is the `data-countdown` value.
+Prices and items live in the `#truck` section of `index.html`. The countdown date is the `data-target` value on `#clock`; when it passes, the banner switches to "just dropped" on its own.
 
 ## What moves on the page
 
