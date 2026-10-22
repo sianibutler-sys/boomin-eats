@@ -1,0 +1,14 @@
+# Preview phase: keep the demo out of search results until launch on boomineats.com
+/*
+  X-Robots-Tag: noindex, nofollow
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+
+/images/*
+  Cache-Control: public, max-age=604800
+
+/vid/*
+  Cache-Control: public, max-age=604800
+
+/
+  Cache-Control: no-cache

@@ -1,4 +1,3 @@
+# Preview: blocked until launch. At launch, replace with "Allow: /" and the sitemap line.
 User-agent: *
-Allow: /
-
-Sitemap: https://boomineats.com/sitemap.xml
+Disallow: /

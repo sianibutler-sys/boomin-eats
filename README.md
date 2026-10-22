@@ -8,7 +8,8 @@ Built by Siani Creates. Static HTML/CSS/JS on Cloudflare Pages, with one Pages F
 
 - `index.html` – the whole site, one page
 - `styles.css`, `script.js`
-- `images/` – logo and food photos (from @boomineats)
+- `images/` – logo and food photos (from @boomineats), WebP
+- `vid/` – muted video loops cut from her reels: `hero` (rosemary butter lamb chops) and the `k-*` kitchen clips, each as WebM, MP4 and a poster frame
 - `functions/api/inquiry.js` – receives the booking form and writes it to Airtable
 
 ## Deploy on Cloudflare Pages
@@ -42,3 +43,25 @@ Until the variables are set, the form falls back to opening an email to hello@bo
 ## Updating the truck menu
 
 Prices and items live in the `#truck` section of `index.html`. The drop banner date is the `data-countdown` value.
+
+## What moves on the page
+
+- The boom: first visit per session, her logo's bomb drops in, the fuse burns, it blows, and the logo lands in the header. Tap or any key skips it. Visitors with reduced motion turned on never see it.
+- The fuse across the top of the page burns as you scroll. The timeline fuse burns through her milestones.
+- Build a truck plate: entrée, two sides, add-ons, the special. The ticket totals it, and the button copies the order and opens her Instagram DMs.
+- Watch me cook: kitchen clips play only while on screen. Tapping one opens it large with a link to the full reel.
+- The service links ("Book a private dinner", etc.) preselect that service in the booking form and adjust its fields.
+
+## Adding a new reel clip
+
+Cut a 4–8 second stretch with no text on screen, strip the audio (her reels use licensed music), and export:
+
+    ffmpeg -ss START -t SECONDS -i reel.mp4 -an -vf "scale=432:768,fps=30" -c:v libx264 -crf 27 -movflags +faststart vid/k-NAME.mp4
+    ffmpeg -ss START -t SECONDS -i reel.mp4 -an -vf "scale=432:768,fps=30" -c:v libvpx-vp9 -b:v 0 -crf 40 vid/k-NAME.webm
+    ffmpeg -ss START -i reel.mp4 -vf "scale=432:768" -frames:v 1 vid/k-NAME.webp
+
+Then copy one `<li>` in the `#reels` list and change `data-vid`, `data-title` and `data-ig`.
+
+## At launch
+
+`_headers`, `robots.txt` and the `robots` meta tag keep the preview out of Google. Remove all three when boomineats.com goes live.

@@ -2,9 +2,10 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Boomin Eats | Chef Lo, private chef in DC, MD and VA</title>
   <meta name="description" content="Chef Lo of Boomin Eats cooks private dinners, event catering, weekly meal prep and food truck pop-ups across DC, Maryland and Virginia.">
+  <meta name="robots" content="noindex, nofollow">
   <link rel="canonical" href="https://boomineats.com/">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Boomin Eats | Chef Lo">
@@ -12,12 +13,23 @@
   <meta property="og:url" content="https://boomineats.com/">
   <meta property="og:image" content="https://boomineats.com/images/hero-lamb.jpg">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="theme-color" content="#2A2421">
+  <meta name="theme-color" content="#2D2A26">
   <link rel="icon" href="images/logo-square.png">
+  <link rel="apple-touch-icon" href="images/logo-square.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&display=swap" rel="stylesheet">
+  <link rel="preload" as="image" href="images/logo.webp">
   <link rel="stylesheet" href="styles.css">
+  <script>
+    /* The boom plays once per visit. Decide before first paint so returning visitors never see a flash. */
+    (function () {
+      var d = document.documentElement, seen = false;
+      try { seen = sessionStorage.getItem("be-boom") === "1"; sessionStorage.setItem("be-boom", "1"); } catch (e) {}
+      var reduce = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
+      if (!seen && !reduce) d.classList.add("boom-on");
+    })();
+  </script>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -31,20 +43,54 @@
     "servesCuisine": ["Comfort food", "Seafood", "Southern", "Caribbean-inspired"],
     "areaServed": ["Washington, DC", "Maryland", "Virginia"],
     "priceRange": "$$",
-    "sameAs": ["https://www.instagram.com/boomineats/"]
+    "sameAs": ["https://www.instagram.com/boomineats/"],
+    "hasMenu": {
+      "@type": "Menu",
+      "name": "Food truck menu",
+      "hasMenuSection": [{
+        "@type": "MenuSection",
+        "name": "Entrées",
+        "hasMenuItem": [
+          {"@type": "MenuItem", "name": "Chimichurri wings", "offers": {"@type": "Offer", "price": "22", "priceCurrency": "USD"}},
+          {"@type": "MenuItem", "name": "Honey garlic salmon", "offers": {"@type": "Offer", "price": "26", "priceCurrency": "USD"}},
+          {"@type": "MenuItem", "name": "Rosemary lamb chops", "offers": {"@type": "Offer", "price": "32", "priceCurrency": "USD"}},
+          {"@type": "MenuItem", "name": "Loaded Boomin Creamy Linguine", "offers": {"@type": "Offer", "price": "45", "priceCurrency": "USD"}}
+        ]
+      }]
+    }
   }
   </script>
 </head>
 <body>
   <a class="skip" href="#main">Skip to content</a>
 
-  <header class="top">
-    <a class="top__brand" href="#top" aria-label="Boomin Eats home">
-      <img src="images/logo.png" alt="Boomin Eats" width="80" height="50">
+  <!-- Opening: her logo's bomb, fuse lit. It blows, the burst fills the screen, the logo lands in the header. -->
+  <div class="boom" id="boom" aria-hidden="true">
+    <div class="boom__stage">
+      <svg class="boom__bomb" viewBox="0 0 200 220">
+        <path class="boom__fuse-bg" d="M128,62 C140,40 150,30 166,26 C178,23 184,14 182,4"/>
+        <path class="boom__fuse" d="M128,62 C140,40 150,30 166,26 C178,23 184,14 182,4" pathLength="100"/>
+        <rect class="boom__cap" x="108" y="54" width="34" height="22" rx="4" transform="rotate(38 125 65)"/>
+        <circle class="boom__body" cx="96" cy="128" r="72"/>
+        <ellipse class="boom__shine" cx="66" cy="98" rx="20" ry="11" transform="rotate(-35 66 98)"/>
+      </svg>
+      <span class="boom__spark"></span>
+      <svg class="boom__burst" viewBox="0 0 200 200"><polygon class="b3" points="100,0 113,49 156,13 142,70 200,66 154,101 198,138 141,132 158,190 113,152 100,200 87,152 42,190 59,132 2,138 46,101 0,66 58,70 44,13 87,49"/><polygon class="b2" points="100,14 111,56 147,28 136,76 184,74 146,101 182,128 135,124 148,172 111,144 100,186 89,144 52,172 65,124 18,128 54,101 16,74 64,76 53,28 89,56"/><polygon class="b1" points="100,34 108,64 132,46 125,78 158,78 132,100 156,120 124,118 132,152 108,134 100,166 92,134 68,152 76,118 44,120 68,100 42,78 75,78 68,46 92,64"/></svg>
+      <img class="boom__logo" src="images/logo.webp" alt="" width="430" height="270">
+    </div>
+    <button class="boom__skip" type="button" tabindex="-1">Skip</button>
+  </div>
+
+  <div class="fuse" aria-hidden="true"><div class="fuse__burn" id="fuseBurn"><span class="fuse__spark"></span></div></div>
+
+  <header class="top" id="top">
+    <a class="top__brand" href="#hero" aria-label="Boomin Eats home">
+      <img id="headLogo" src="images/logo.webp" alt="Boomin Eats" width="80" height="50">
     </a>
     <nav class="top__nav" aria-label="Main">
       <a href="#truck">Truck menu</a>
       <a href="#services">Services</a>
+      <a href="#kitchen">Watch</a>
       <a href="#story">Chef Lo</a>
       <a class="top__book" href="#book">Book Chef Lo</a>
     </nav>
@@ -52,65 +98,94 @@
 
   <main id="main">
 
-    <section class="hero" id="top">
+    <section class="hero" id="hero">
       <div class="hero__copy">
         <p class="hero__where">DC, Maryland and Virginia</p>
         <h1 class="hero__title">Come Hungry.<br>Leave Boomin.</h1>
         <p class="hero__lede">I’m Chef Lo. I cook private dinners, cater events, prep your week of meals and run the Boomin Eats truck. Six years of honey cajun, seafood mac and lamb chops, plated for your table.</p>
         <div class="hero__actions">
           <a class="btn btn--fire" href="#book">Book Chef Lo</a>
-          <a class="btn btn--line" href="#truck">See the truck menu</a>
+          <a class="btn btn--line" href="#truck">Build a truck plate</a>
         </div>
       </div>
       <figure class="hero__plate">
         <svg class="burst" viewBox="0 0 200 200" aria-hidden="true"><polygon points="100,4 116,52 160,22 146,72 196,70 156,102 194,134 144,134 160,184 116,152 100,198 84,152 40,184 56,134 6,134 44,102 4,70 54,72 40,22 84,52"/></svg>
-        <img src="images/hero-lamb.jpg" alt="Chef Lo serving rosemary butter lamb chops" width="640" height="640">
-        <figcaption>Rosemary butter lamb chops</figcaption>
+        <div class="hero__disc">
+          <video class="hero__vid" muted loop playsinline autoplay preload="metadata" poster="vid/hero.webp" aria-label="Butter and rosemary basted over a tray of lamb chops">
+            <source src="vid/hero.webm" type="video/webm">
+            <source src="vid/hero.mp4" type="video/mp4">
+          </video>
+        </div>
+        <figcaption><span class="live" aria-hidden="true"></span>Now basting: rosemary butter lamb chops</figcaption>
+        <button class="hero__pause" type="button" aria-pressed="false" aria-label="Pause video">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path class="i-pause" d="M7 5h4v14H7zM13 5h4v14h-4z"/><path class="i-play" d="M8 5l11 7-11 7z"/></svg>
+        </button>
       </figure>
     </section>
 
     <section class="drop" aria-labelledby="drop-title">
       <div class="drop__inner">
         <h2 id="drop-title" class="drop__title">New truck menu drops October 26</h2>
-        <p class="drop__body" data-countdown="2026-10-26T12:00:00-04:00">Follow <a href="https://www.instagram.com/boomineats/">@boomineats</a> for the first look and the next pickup location.</p>
+        <div class="clock" id="clock" data-target="2026-10-26T12:00:00-04:00" aria-live="off">
+          <span><b data-u="d">0</b>days</span><span><b data-u="h">00</b>hrs</span><span><b data-u="m">00</b>min</span><span><b data-u="s">00</b>sec</span>
+        </div>
+        <p class="drop__body">Follow <a href="https://www.instagram.com/boomineats/">@boomineats</a> for the first look and the next pickup location.</p>
       </div>
     </section>
 
     <section class="truck" id="truck" aria-labelledby="truck-title">
-      <div class="truck__board">
+      <div class="truck__board" id="builder">
         <h2 id="truck-title" class="board__title">Food truck menu</h2>
-        <p class="board__note">Every entrée comes with yellow rice and two sides.</p>
+        <p class="board__note">Every entrée comes with yellow rice and two sides. Tap to build your plate.</p>
 
-        <h3 class="board__head">Entrées</h3>
-        <ul class="board__list">
-          <li><span>Chimichurri wings</span><i aria-hidden="true"></i><b>$22</b></li>
-          <li><span>Honey garlic salmon</span><i aria-hidden="true"></i><b>$26</b></li>
-          <li><span>Rosemary lamb chops</span><i aria-hidden="true"></i><b>$32</b></li>
-        </ul>
+        <fieldset class="board__group">
+          <legend class="board__head">Entrées</legend>
+          <ul class="board__list">
+            <li><label class="pick"><input type="radio" name="entree" value="Chimichurri wings" data-price="22"><span>Chimichurri wings</span><i aria-hidden="true"></i><b>$22</b></label></li>
+            <li><label class="pick"><input type="radio" name="entree" value="Honey garlic salmon" data-price="26"><span>Honey garlic salmon</span><i aria-hidden="true"></i><b>$26</b></label></li>
+            <li><label class="pick"><input type="radio" name="entree" value="Rosemary lamb chops" data-price="32"><span>Rosemary lamb chops</span><i aria-hidden="true"></i><b>$32</b></label></li>
+          </ul>
+        </fieldset>
 
-        <h3 class="board__head">Sides</h3>
-        <ul class="board__list board__list--plain">
-          <li>Yellow rice</li>
-          <li>4-cheese mac</li>
-          <li>Roasted broccoli and carrots</li>
-          <li>Truffle parm fries</li>
-          <li><span>Garlic butter shrimp</span><i aria-hidden="true"></i><b>+$8</b></li>
-          <li><span>Extra side</span><i aria-hidden="true"></i><b>+$6</b></li>
-        </ul>
+        <fieldset class="board__group">
+          <legend class="board__head">Sides <small id="sideCount">pick 2</small></legend>
+          <ul class="board__list board__list--plain">
+            <li><label class="pick"><input type="checkbox" name="side" value="4-cheese mac"><span>4-cheese mac</span></label></li>
+            <li><label class="pick"><input type="checkbox" name="side" value="Roasted broccoli and carrots"><span>Roasted broccoli and carrots</span></label></li>
+            <li><label class="pick"><input type="checkbox" name="side" value="Truffle parm fries"><span>Truffle parm fries</span></label></li>
+            <li><label class="pick"><input type="checkbox" name="side" value="Yellow rice"><span>Yellow rice</span></label></li>
+          </ul>
+        </fieldset>
 
-        <div class="board__special">
-          <h3>The special</h3>
-          <p class="board__special-name">Loaded Boomin Creamy Linguine <b>$45</b></p>
-          <p>Creamy pasta with lamb, salmon and shrimp, with a side of broccoli.</p>
-        </div>
+        <fieldset class="board__group">
+          <legend class="board__head">Add on</legend>
+          <ul class="board__list board__list--plain">
+            <li><label class="pick"><input type="checkbox" name="addon" value="Garlic butter shrimp" data-price="8"><span>Garlic butter shrimp</span><i aria-hidden="true"></i><b>+$8</b></label></li>
+            <li><label class="pick"><input type="checkbox" name="addon" value="Extra side" data-price="6"><span>Extra side</span><i aria-hidden="true"></i><b>+$6</b></label></li>
+          </ul>
+        </fieldset>
+
+        <label class="board__special pick pick--special">
+          <input type="checkbox" name="special" value="Loaded Boomin Creamy Linguine" data-price="45">
+          <span class="board__special-head">The special</span>
+          <span class="board__special-name">Loaded Boomin Creamy Linguine <b>$45</b></span>
+          <span class="board__special-desc">Creamy pasta with lamb, salmon and shrimp, with a side of broccoli.</span>
+        </label>
       </div>
 
-      <aside class="truck__stop" aria-label="Last stop">
-        <h3>Last stop</h3>
-        <p class="stop__place">7501 Allentown Rd<br>Temple Hills, MD</p>
-        <p>Friday, October 16, 2–7 PM. Pickup only.</p>
-        <p>Preorders are the move. Send your order and pickup time and it’s ready when you pull up.</p>
-        <a class="btn btn--fire" href="https://ig.me/m/boomineats">Preorder by DM</a>
+      <aside class="truck__ticket" aria-labelledby="ticket-title">
+        <div class="ticket" id="ticket">
+          <h3 id="ticket-title">Your order</h3>
+          <ul class="ticket__lines" id="ticketLines"><li class="ticket__empty">Pick an entrée or the special to start.</li></ul>
+          <p class="ticket__total"><span>Total</span><b id="ticketTotal">$0</b></p>
+          <button class="btn btn--fire ticket__go" id="ticketGo" type="button" disabled>Copy order and DM Chef Lo</button>
+          <p class="ticket__hint">The button copies your order and opens her DMs. Paste it in with your pickup time.</p>
+        </div>
+        <div class="stop">
+          <h3>Last stop</h3>
+          <p class="stop__place">7501 Allentown Rd<br>Temple Hills, MD</p>
+          <p>Friday, October 16, 2–7 PM. Pickup only. Preorders are the move, so it’s ready when you pull up.</p>
+        </div>
       </aside>
     </section>
 
@@ -123,25 +198,49 @@
           <h3>Private dining</h3>
           <p>A chef in your kitchen for date night, a birthday or a dinner you want people talking about. I write the menu around you, cook on site and plate every course.</p>
           <p class="menu__eg">Ask about: double-bone lamb chops, Spanish roasted chicken with romesco, lobster fried rice.</p>
+          <a class="menu__book" href="#book" data-service="Private dining">Book a private dinner</a>
         </article>
 
         <article class="menu__item">
           <h3>Catering</h3>
           <p>Birthdays, baby showers, church outings, campus events and corporate lunches. Platters, full pans or a plated service, built to your guest count.</p>
           <p class="menu__eg">A birthday I cooked: honey cajun salmon bites, vegan egg rolls, honey cajun drumsticks, cauliflower curry with brown rice.</p>
+          <a class="menu__book" href="#book" data-service="Catering">Get a catering quote</a>
         </article>
 
         <article class="menu__item">
           <h3>Meal prep</h3>
           <p>A week of real food portioned and ready in your fridge. Tell me your goals, what you can’t stand and what you could eat every day. Vegan and lighter plates are on the table too.</p>
           <p class="menu__eg">Plates like: jerk salmon with yellow rice, maple salmon with broccoli, grilled chicken with cilantro rice.</p>
+          <a class="menu__book" href="#book" data-service="Meal prep">Start meal prep</a>
         </article>
 
         <article class="menu__item">
           <h3>Pop-ups and the truck</h3>
           <p>Boomin Eats pulls up with a short menu and long lines. Book the truck for your block party, office or festival, or catch the next public stop.</p>
           <p class="menu__eg">Watch Instagram for dates and the preorder window.</p>
+          <a class="menu__book" href="#book" data-service="Food truck or pop-up">Book the truck</a>
         </article>
+      </div>
+    </section>
+
+    <section class="kitchen" id="kitchen" aria-labelledby="kitchen-title">
+      <div class="kitchen__head">
+        <h2 id="kitchen-title" class="section-title">Watch me cook</h2>
+        <p class="section-lede">Straight from the reels. Tap any clip to watch it big.</p>
+      </div>
+      <ul class="reels" id="reels">
+        <li><button class="reel" type="button" data-vid="k-chicken-parm" data-title="Chicken parm x spicy vodka rigatoni" data-ig="https://www.instagram.com/boomineats/reel/Dd44oG6NhgW/"><video muted loop playsinline preload="none" poster="vid/k-chicken-parm.webp" aria-hidden="true"></video><span class="reel__cap">Chicken parm x spicy vodka rigatoni</span></button></li>
+        <li><button class="reel" type="button" data-vid="k-shrimp-chips" data-title="Creamy parm shrimp chips" data-ig="https://www.instagram.com/boomineats/reel/DajBm2EhlEu/"><video muted loop playsinline preload="none" poster="vid/k-shrimp-chips.webp" aria-hidden="true"></video><span class="reel__cap">Creamy parm shrimp chips</span></button></li>
+        <li><button class="reel" type="button" data-vid="k-peach-chimichurri" data-title="Grilled peach chimichurri" data-ig="https://www.instagram.com/boomineats/reel/DagK1vhAxgI/"><video muted loop playsinline preload="none" poster="vid/k-peach-chimichurri.webp" aria-hidden="true"></video><span class="reel__cap">Grilled peach chimichurri</span></button></li>
+        <li><button class="reel" type="button" data-vid="k-lamb-pour" data-title="Rosemary butter lamb chops" data-ig="https://www.instagram.com/boomineats/reel/DZGnNeDN10f/"><video muted loop playsinline preload="none" poster="vid/k-lamb-pour.webp" aria-hidden="true"></video><span class="reel__cap">Rosemary butter lamb chops</span></button></li>
+        <li><button class="reel" type="button" data-vid="k-pork-chops" data-title="Apple sage pork chops" data-ig="https://www.instagram.com/boomineats/reel/DeIMrQmBx1u/"><video muted loop playsinline preload="none" poster="vid/k-pork-chops.webp" aria-hidden="true"></video><span class="reel__cap">Apple sage pork chops</span></button></li>
+        <li><button class="reel" type="button" data-vid="k-poundcake" data-title="Lemon pound cake, blueberry compote" data-ig="https://www.instagram.com/boomineats/reel/DdhzlIotxCR/"><video muted loop playsinline preload="none" poster="vid/k-poundcake.webp" aria-hidden="true"></video><span class="reel__cap">Lemon pound cake, blueberry compote</span></button></li>
+        <li><button class="reel" type="button" data-vid="k-mango-slaw" data-title="Asian mango slaw" data-ig="https://www.instagram.com/boomineats/reel/DeAbidChpxB/"><video muted loop playsinline preload="none" poster="vid/k-mango-slaw.webp" aria-hidden="true"></video><span class="reel__cap">Asian mango slaw</span></button></li>
+      </ul>
+      <div class="reels__nav">
+        <button type="button" class="reels__btn" data-dir="-1" aria-label="Previous clips"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+        <button type="button" class="reels__btn" data-dir="1" aria-label="Next clips"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
       </div>
     </section>
 
@@ -150,22 +249,22 @@
       <p class="section-lede">Before the truck, there was a DM inbox full of preorders. These are the dishes people kept coming back for.</p>
       <ul class="sig">
         <li class="sig__item">
-          <figure><img src="images/boomin-alfredo.jpg" alt="Boomin Alfredo with salmon and shrimp" loading="lazy"></figure>
+          <figure><img src="images/boomin-alfredo.webp" alt="Boomin Alfredo lifted from the pan in a cheese pull" loading="lazy"></figure>
           <h3>Boomin Alfredo</h3>
           <p>The first plate I sold out of, every week. Chicken, cajun salmon and shrimp, or lamb if you’re feeling it.</p>
         </li>
         <li class="sig__item">
-          <figure><img src="images/seafood-mac.jpg" alt="Crab and shrimp seafood mac and cheese" loading="lazy"></figure>
+          <figure><img src="images/seafood-mac.webp" alt="Crab and shrimp seafood mac and cheese" loading="lazy"></figure>
           <h3>Seafood mac</h3>
           <p>Crab and shrimp folded into my cheese sauce. Add jerk salmon on top and thank me later.</p>
         </li>
         <li class="sig__item">
-          <figure><img src="images/honey-cajun-lamb.jpg" alt="Honey cajun lamb chops" loading="lazy"></figure>
+          <figure><img src="images/honey-cajun-lamb.webp" alt="Honey cajun lamb chops" loading="lazy"></figure>
           <h3>Honey cajun everything</h3>
           <p>My golden honey cajun sauce goes on drumsticks, salmon, lamb pops and the platters that started it all.</p>
         </li>
         <li class="sig__item">
-          <figure><img src="images/chicken-parm-rigatoni.jpg" alt="Chicken parm with spicy vodka rigatoni" loading="lazy"></figure>
+          <figure><img src="images/chicken-parm-rigatoni.webp" alt="Chef Lo lifting a fried chicken cutlet from the pan" loading="lazy"></figure>
           <h3>Chicken parm x spicy vodka rigatoni</h3>
           <p>The reel that brought 4,000 new people to the page. It eats even better than it looks.</p>
         </li>
@@ -180,7 +279,7 @@
         <p>Comfort food is where I come from. Turning it into an experience is where I’m taking it.</p>
       </div>
 
-      <ol class="timeline" aria-label="Milestones">
+      <ol class="timeline" id="timeline" aria-label="Milestones">
         <li><span class="timeline__year">2020</span><p>First menu drops. Honey glazed salmon and shrimp, cilantro rice, Boomin Alfredo, all by preorder.</p></li>
         <li><span class="timeline__year">2021</span><p>First catered events: a baby shower, a church outing and a birthday dinner.</p></li>
         <li><span class="timeline__year">2023</span><p>Valentine’s giveaway. The winner got a private chef dinner for two.</p></li>
@@ -189,23 +288,23 @@
       </ol>
 
       <div class="rooms">
-        <figure><img src="images/sobewff.jpg" alt="Chef Lo with the kitchen team at the South Beach Wine and Food Festival" loading="lazy"><figcaption>South Beach Wine &amp; Food Festival, 2026</figcaption></figure>
-        <figure><img src="images/georgetown.jpg" alt="Chef Lo on the line under a Women in Culinary chef spotlight screen at Georgetown University" loading="lazy"><figcaption>Chef spotlight, Georgetown University</figcaption></figure>
-        <figure><img src="images/womens-day.jpg" alt="Printed menu from the Women’s History Month dinner beside a plated dessert" loading="lazy"><figcaption>My menu for the Women’s History Month dinner, 2025</figcaption></figure>
+        <figure><button class="zoom" type="button" data-full="images/sobewff.webp"><img src="images/sobewff.webp" alt="Chef Lo with the kitchen team at the South Beach Wine and Food Festival" loading="lazy"></button><figcaption>South Beach Wine &amp; Food Festival, 2026</figcaption></figure>
+        <figure><button class="zoom" type="button" data-full="images/georgetown.webp"><img src="images/georgetown.webp" alt="Chef Lo on the line under a Women in Culinary chef spotlight screen at Georgetown University" loading="lazy"></button><figcaption>Chef spotlight, Georgetown University</figcaption></figure>
+        <figure><button class="zoom" type="button" data-full="images/womens-day.webp"><img src="images/womens-day.webp" alt="Printed menu from the Women’s History Month dinner beside a plated dessert" loading="lazy"></button><figcaption>My menu for the Women’s History Month dinner, 2025</figcaption></figure>
       </div>
     </section>
 
     <section class="gallery" aria-labelledby="gallery-title">
       <h2 id="gallery-title" class="section-title">From the Boomin kitchen</h2>
       <div class="grid">
-        <figure><img src="images/ceviche.jpg" alt="Scallop and shrimp ceviche with smashed avocado and mango salsa" loading="lazy"><figcaption>Scallop and shrimp ceviche</figcaption></figure>
-        <figure><img src="images/maple-salmon.jpg" alt="Maple salmon over yellow rice with steamed broccoli" loading="lazy"><figcaption>Maple salmon, yellow rice, broccoli</figcaption></figure>
-        <figure><img src="images/lamb-half-rack.jpg" alt="Half rack lamb with fresco glaze over mint pea purée" loading="lazy"><figcaption>Half rack lamb, mint pea purée</figcaption></figure>
-        <figure><img src="images/pancakes.jpg" alt="Pancakes with blueberry orange compote and toasted almonds" loading="lazy"><figcaption>Blueberry-orange pancakes</figcaption></figure>
-        <figure><img src="images/lobster-fried-rice.jpg" alt="Lobster fried rice" loading="lazy"><figcaption>Lobster fried rice</figcaption></figure>
-        <figure><img src="images/jerk-chicken.jpg" alt="Jerk chicken breast with green curry aioli and sweet potato corn salsa" loading="lazy"><figcaption>Jerk chicken, green curry aioli</figcaption></figure>
-        <figure><img src="images/pork-chops.jpg" alt="Chef Lo plating apple sage pork chops" loading="lazy"><figcaption>Apple sage pork chops</figcaption></figure>
-        <figure><img src="images/spanish-chicken.jpg" alt="Spanish roasted chicken with romesco, broccolini and yellow rice" loading="lazy"><figcaption>Spanish roasted chicken, romesco</figcaption></figure>
+        <figure><button class="zoom" type="button" data-full="images/ceviche.webp"><img src="images/ceviche.webp" alt="Scallop and shrimp ceviche with smashed avocado and mango salsa" loading="lazy"></button><figcaption>Scallop and shrimp ceviche</figcaption></figure>
+        <figure><button class="zoom" type="button" data-full="images/maple-salmon.webp"><img src="images/maple-salmon.webp" alt="Maple salmon over yellow rice with steamed broccoli" loading="lazy"></button><figcaption>Maple salmon, yellow rice, broccoli</figcaption></figure>
+        <figure><button class="zoom" type="button" data-full="images/lamb-half-rack.webp"><img src="images/lamb-half-rack.webp" alt="Half rack lamb with fresco glaze over mint pea purée" loading="lazy"></button><figcaption>Half rack lamb, mint pea purée</figcaption></figure>
+        <figure><button class="zoom" type="button" data-full="images/pancakes.webp"><img src="images/pancakes.webp" alt="Pancakes with blueberry orange compote and toasted almonds" loading="lazy"></button><figcaption>Blueberry-orange pancakes</figcaption></figure>
+        <figure><button class="zoom" type="button" data-full="images/lobster-fried-rice.webp"><img src="images/lobster-fried-rice.webp" alt="Lobster fried rice" loading="lazy"></button><figcaption>Lobster fried rice</figcaption></figure>
+        <figure><button class="zoom" type="button" data-full="images/jerk-chicken.webp"><img src="images/jerk-chicken.webp" alt="Jerk chicken breast with green curry aioli and sweet potato corn salsa" loading="lazy"></button><figcaption>Jerk chicken, green curry aioli</figcaption></figure>
+        <figure><button class="zoom" type="button" data-full="images/pork-chops.webp"><img src="images/pork-chops.webp" alt="Chef Lo plating apple sage pork chops" loading="lazy"></button><figcaption>Apple sage pork chops</figcaption></figure>
+        <figure><button class="zoom" type="button" data-full="images/spanish-chicken.webp"><img src="images/spanish-chicken.webp" alt="Spanish roasted chicken with romesco, broccolini and yellow rice" loading="lazy"></button><figcaption>Spanish roasted chicken, romesco</figcaption></figure>
       </div>
       <a class="btn btn--line gallery__more" href="https://www.instagram.com/boomineats/">More on Instagram</a>
     </section>
@@ -232,13 +331,13 @@
         </div>
         <div class="form__row">
           <label>Phone<input type="tel" name="phone" autocomplete="tel"></label>
-          <label>Date<input type="date" name="date"></label>
+          <label><span id="dateLabel">Date</span><input type="date" name="date"></label>
         </div>
         <div class="form__row">
-          <label>Guests<input type="number" name="guests" min="1" inputmode="numeric"></label>
+          <label><span id="guestLabel">Guests</span><input type="number" name="guests" min="1" inputmode="numeric"></label>
           <label>City or venue<input type="text" name="location" placeholder="Bowie, MD"></label>
         </div>
-        <label>Anything I should know?<textarea name="details" rows="4" placeholder="The occasion, dishes you love, allergies, budget"></textarea></label>
+        <label>Anything I should know?<textarea name="details" id="details" rows="4" placeholder="The occasion, dishes you love, allergies, budget"></textarea></label>
         <input type="text" name="company_site" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
         <button class="btn btn--fire" type="submit">Send my request</button>
         <p class="form__status" role="status" aria-live="polite"></p>
@@ -248,11 +347,26 @@
   </main>
 
   <footer class="foot">
-    <img src="images/logo.png" alt="Boomin Eats" width="200" height="126">
+    <img src="images/logo.webp" alt="Boomin Eats" width="200" height="126" loading="lazy">
     <p class="foot__line">Come Hungry. Leave Boomin.</p>
     <p>Chef Lo<br>DC, MD and VA<br><a href="https://www.instagram.com/boomineats/">@boomineats</a></p>
     <p class="foot__credit">Site by Siani Creates</p>
   </footer>
+
+  <nav class="dock" aria-label="Quick actions">
+    <a href="#truck">Build a plate</a>
+    <a class="dock__book" href="#book">Book Chef Lo</a>
+  </nav>
+
+  <dialog class="viewer" id="viewer" aria-label="Media viewer">
+    <button class="viewer__close" type="button" aria-label="Close">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+    <div class="viewer__media" id="viewerMedia"></div>
+    <p class="viewer__cap" id="viewerCap"></p>
+  </dialog>
+
+  <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
 
   <script src="script.js" defer></script>
 </body>
