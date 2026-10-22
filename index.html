@@ -89,6 +89,7 @@
     <nav class="top__nav" aria-label="Main">
       <a href="#truck">Truck menu</a>
       <a href="#services">Services</a>
+      <a href="#menus">Menus</a>
       <a href="#kitchen">Watch</a>
       <a href="#story">Chef Lo</a>
       <a class="top__book" href="#book">Book Chef Lo</a>
@@ -207,6 +208,7 @@
           <p class="menu__eg">A birthday I cooked: honey cajun salmon bites, vegan egg rolls, honey cajun drumsticks, cauliflower curry with brown rice.</p>
           <p class="menu__travel">Event out of town? I’ll come to you.</p>
           <a class="menu__book" href="#book" data-service="Catering">Get a catering quote</a>
+          <a class="menu__see" href="#menus" data-tab="cater">See the packages</a>
         </article>
 
         <article class="menu__item">
@@ -214,6 +216,7 @@
           <p>A week of real food portioned and ready in your fridge. Tell me your goals, what you can’t stand and what you could eat every day. Vegan and lighter plates are on the table too.</p>
           <p class="menu__eg">Plates like: jerk salmon with yellow rice, maple salmon with broccoli, grilled chicken with cilantro rice.</p>
           <a class="menu__book" href="#book" data-service="Meal prep">Start meal prep</a>
+          <a class="menu__see" href="#menus" data-tab="prep">See the menu</a>
         </article>
 
         <article class="menu__item">
@@ -222,6 +225,145 @@
           <p class="menu__eg">Watch Instagram for dates and the preorder window.</p>
           <a class="menu__book" href="#book" data-service="Food truck or pop-up">Book the truck</a>
         </article>
+      </div>
+    </section>
+
+    <section class="menus" id="menus" aria-labelledby="menus-title">
+      <div class="menus__head">
+        <h2 id="menus-title" class="section-title">Pick a starting point</h2>
+        <p class="section-lede">Every menu gets built around you. These come from plates I’ve already cooked, so you can point at what you want and I’ll take it from there.</p>
+        <div class="tabs" role="tablist" aria-label="Menus">
+          <button class="tab" role="tab" id="tab-prep" aria-controls="panel-prep" aria-selected="true">Meal prep</button>
+          <button class="tab" role="tab" id="tab-cater" aria-controls="panel-cater" aria-selected="false" tabindex="-1">Catering packages</button>
+        </div>
+      </div>
+
+      <!-- MEAL PREP -->
+      <div class="panel" id="panel-prep" role="tabpanel" aria-labelledby="tab-prep">
+        <p class="panel__how">Tap the plates you’d eat on repeat. I’ll build your week from your picks.</p>
+
+        <div class="prep">
+          <div class="prep__groups">
+            <fieldset class="prep__group">
+              <legend>Seafood</legend>
+              <label class="dish"><input type="checkbox" name="prep" value="Maple salmon, yellow rice, steamed broccoli"><img src="images/maple-salmon.webp" alt="" loading="lazy"><span class="dish__name">Maple salmon</span><span class="dish__with">Yellow rice, steamed broccoli</span></label>
+              <label class="dish"><input type="checkbox" name="prep" value="Jerk salmon, yellow rice, cabbage, string beans"><span class="dish__dot" aria-hidden="true"></span><span class="dish__name">Jerk salmon</span><span class="dish__with">Yellow rice, cabbage, string beans</span></label>
+              <label class="dish"><input type="checkbox" name="prep" value="Honey cajun salmon, cilantro rice, corn salsa, spinach"><span class="dish__dot" aria-hidden="true"></span><span class="dish__name">Honey cajun salmon</span><span class="dish__with">Cilantro rice, corn salsa, spinach</span></label>
+              <label class="dish"><input type="checkbox" name="prep" value="Blackened rockfish, roasted fingerling potatoes, broccoli and carrots"><span class="dish__dot" aria-hidden="true"></span><span class="dish__name">Blackened rockfish</span><span class="dish__with">Roasted fingerlings, broccoli and carrots</span></label>
+              <label class="dish"><input type="checkbox" name="prep" value="Pan seared snapper, coconut chickpeas and spinach, white rice"><span class="dish__dot" aria-hidden="true"></span><span class="dish__name">Pan seared snapper</span><span class="dish__with">Coconut chickpeas and spinach, white rice</span></label>
+              <label class="dish"><input type="checkbox" name="prep" value="Cajun shrimp fried rice with asparagus"><span class="dish__dot" aria-hidden="true"></span><span class="dish__name">Cajun shrimp fried rice</span><span class="dish__with">With asparagus</span></label>
+            </fieldset>
+
+            <fieldset class="prep__group">
+              <legend>Chicken and more</legend>
+              <label class="dish"><input type="checkbox" name="prep" value="Spanish roasted chicken, romesco, broccolini, yellow rice"><img src="images/spanish-chicken.webp" alt="" loading="lazy"><span class="dish__name">Spanish roasted chicken</span><span class="dish__with">Romesco, broccolini, yellow rice</span></label>
+              <label class="dish"><input type="checkbox" name="prep" value="Jerk chicken breast, green curry aioli, sweet potato corn salsa"><img src="images/jerk-chicken.webp" alt="" loading="lazy"><span class="dish__name">Jerk chicken breast</span><span class="dish__with">Green curry aioli, sweet potato corn salsa</span></label>
+              <label class="dish"><input type="checkbox" name="prep" value="Whisky teriyaki glazed chicken, cilantro rice, sautéed broccoli"><span class="dish__dot" aria-hidden="true"></span><span class="dish__name">Whisky teriyaki chicken</span><span class="dish__with">Cilantro rice, sautéed broccoli</span></label>
+              <label class="dish"><input type="checkbox" name="prep" value="Coconut curry chicken, garlic mash, sautéed French beans"><span class="dish__dot" aria-hidden="true"></span><span class="dish__name">Coconut curry chicken</span><span class="dish__with">Garlic mash, sautéed French beans</span></label>
+              <label class="dish"><input type="checkbox" name="prep" value="Lemon beurre blanc pasta, herb roasted chicken"><img src="images/lemon-beurre-blanc.webp" alt="" loading="lazy"><span class="dish__name">Lemon beurre blanc pasta</span><span class="dish__with">Herb roasted chicken</span></label>
+              <label class="dish"><input type="checkbox" name="prep" value="Apple sage pork chops"><img src="images/pork-chops.webp" alt="" loading="lazy"><span class="dish__name">Apple sage pork chops</span><span class="dish__with">Sides of your choice</span></label>
+              <label class="dish"><input type="checkbox" name="prep" value="Turkey wings, cilantro rice, spinach"><span class="dish__dot" aria-hidden="true"></span><span class="dish__name">Turkey wings</span><span class="dish__with">Cilantro rice, spinach</span></label>
+            </fieldset>
+
+            <fieldset class="prep__group">
+              <legend>Plant-based</legend>
+              <label class="dish"><input type="checkbox" name="prep" value="Cauliflower curry with brown rice (vegan)"><span class="dish__dot" aria-hidden="true"></span><span class="dish__name">Cauliflower curry</span><span class="dish__with">Brown rice</span></label>
+              <label class="dish"><input type="checkbox" name="prep" value="Curry potatoes with rice (vegan)"><span class="dish__dot" aria-hidden="true"></span><span class="dish__name">Curry potatoes</span><span class="dish__with">Rice</span></label>
+              <label class="dish"><input type="checkbox" name="prep" value="Spinach fettuccine (vegan)"><span class="dish__dot" aria-hidden="true"></span><span class="dish__name">Spinach fettuccine</span><span class="dish__with">Vegan, under 700 calories</span></label>
+              <label class="dish"><input type="checkbox" name="prep" value="Asian mango slaw"><span class="dish__dot" aria-hidden="true"></span><span class="dish__name">Asian mango slaw</span><span class="dish__with">Pairs with any protein</span></label>
+            </fieldset>
+          </div>
+
+          <aside class="week" aria-labelledby="week-title">
+            <h3 id="week-title">My week</h3>
+            <ol class="week__list" id="weekList"><li class="week__empty">Nothing yet. Tap a plate to add it.</li></ol>
+            <button class="btn btn--fire week__go" id="weekGo" type="button" disabled>Send my picks to Chef Lo</button>
+            <p class="week__note">Your picks go into the booking form. Add your goals and how many meals a week, and I’ll send a plan and a quote.</p>
+          </aside>
+        </div>
+        <button class="week__pill" id="weekPill" type="button" hidden>See my week <b id="weekCount">0</b></button>
+      </div>
+
+      <!-- CATERING -->
+      <div class="panel" id="panel-cater" role="tabpanel" aria-labelledby="tab-cater" hidden>
+        <p class="panel__how">Pick the package closest to your event. Every one flexes on guest count, dishes and dietary needs, and every quote is built to the event.</p>
+
+        <div class="pkgs">
+          <article class="pkg">
+            <p class="pkg__for">Office lunches, game days, family gatherings</p>
+            <h3 class="pkg__name">The Drop-Off</h3>
+            <p class="pkg__fmt">Full pans and platters, dropped off hot and ready to serve</p>
+            <ul class="pkg__menu">
+              <li>Boomin Alfredo by the pan, with chicken, shrimp or salmon</li>
+              <li>Honey cajun drumsticks or wings</li>
+              <li>Seafood mac</li>
+              <li>Cajun fried rice</li>
+              <li>Steak and cheese bomb rolls</li>
+            </ul>
+            <button class="btn btn--line pkg__go" type="button" data-pkg="The Drop-Off">Start with this package</button>
+          </article>
+
+          <article class="pkg pkg--lead">
+            <p class="pkg__for">Birthdays, baby showers, celebrations</p>
+            <h3 class="pkg__name">The Boomin Spread</h3>
+            <p class="pkg__fmt">A full buffet: apps, entrées and sides. Built from a birthday I catered, regular and vegan side by side.</p>
+            <dl class="pkg__courses">
+              <dt>Apps</dt><dd>Honey cajun salmon bites, vegan egg rolls</dd>
+              <dt>Entrées</dt><dd>Honey cajun drumsticks, cauliflower curry with brown rice</dd>
+              <dt>Sides</dt><dd>Broccoli, cheesy mac (regular and vegan), fried rice, honey butter rolls</dd>
+            </dl>
+            <button class="btn btn--fire pkg__go" type="button" data-pkg="The Boomin Spread">Start with this package</button>
+          </article>
+
+          <article class="pkg">
+            <p class="pkg__for">Date night, anniversaries, small dinners</p>
+            <h3 class="pkg__name">The Plated Night</h3>
+            <p class="pkg__fmt">Cooked on site and served course by course. The menu from my Valentine’s dinner for two.</p>
+            <dl class="pkg__courses">
+              <dt>App</dt><dd>Buffalo wings</dd>
+              <dt>Entrée</dt><dd>Double-bone lamb chops</dd>
+              <dt>Sides</dt><dd>Cheesy mac, sautéed string beans, garlic mashed potatoes, Caesar salad</dd>
+            </dl>
+            <button class="btn btn--line pkg__go" type="button" data-pkg="The Plated Night">Start with this package</button>
+          </article>
+
+          <article class="pkg">
+            <p class="pkg__for">Morning events, showers, the day after the party</p>
+            <h3 class="pkg__name">The Brunch</h3>
+            <p class="pkg__fmt">Sweet and savory, served buffet style</p>
+            <ul class="pkg__menu">
+              <li>Shrimp and grits</li>
+              <li>Fried catfish and cheesy grits with cajun cream sauce</li>
+              <li>Pancakes with blueberry-orange compote</li>
+              <li>Waffles with strawberry compote</li>
+              <li>Breakfast egg rolls, bacon and egg</li>
+            </ul>
+            <button class="btn btn--line pkg__go" type="button" data-pkg="The Brunch">Start with this package</button>
+          </article>
+
+          <article class="pkg">
+            <p class="pkg__for">Block parties, festivals, campus and company events</p>
+            <h3 class="pkg__name">The Truck Pull-Up</h3>
+            <p class="pkg__fmt">The Boomin Eats truck at your event, with plates made to order</p>
+            <ul class="pkg__menu">
+              <li>Chimichurri wings, honey garlic salmon, rosemary lamb chops</li>
+              <li>Yellow rice, 4-cheese mac, truffle parm fries</li>
+              <li>The Loaded Boomin Creamy Linguine</li>
+            </ul>
+            <button class="btn btn--line pkg__go" type="button" data-pkg="The Truck Pull-Up" data-service="Food truck or pop-up">Start with this package</button>
+          </article>
+
+          <article class="pkg pkg--add">
+            <h3 class="pkg__name">Add dessert to any package</h3>
+            <ul class="pkg__menu pkg__menu--inline">
+              <li>Mini lemon pound cakes with blueberry compote</li>
+              <li>Apple turnovers</li>
+              <li>Caramel chocolate chip cookies</li>
+              <li>Peaches and cream cheesecake</li>
+              <li>Cinnamon apple cheesecake</li>
+            </ul>
+          </article>
+        </div>
       </div>
     </section>
 
@@ -367,6 +509,7 @@
     <nav class="foot__nav" aria-label="Footer">
       <a href="#truck">Truck menu</a>
       <a href="#services">Services</a>
+      <a href="#menus">Menus</a>
       <a href="#kitchen">Watch</a>
       <a href="#story">Chef Lo</a>
       <a href="https://www.instagram.com/boomineats/">Instagram</a>

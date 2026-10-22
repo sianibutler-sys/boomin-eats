@@ -308,6 +308,86 @@
     });
   }
 
+  /* ---------- Menus: tabs ---------- */
+  var tabs = $$(".tab");
+  function selectTab(t, focus) {
+    tabs.forEach(function (o) {
+      var on = o === t;
+      o.setAttribute("aria-selected", String(on));
+      o.tabIndex = on ? 0 : -1;
+      $("#" + o.getAttribute("aria-controls")).hidden = !on;
+    });
+    if (focus) t.focus();
+  }
+  tabs.forEach(function (t, i) {
+    t.addEventListener("click", function () { selectTab(t); });
+    t.addEventListener("keydown", function (e) {
+      if (e.key === "ArrowRight" || e.key === "ArrowLeft") {
+        e.preventDefault();
+        selectTab(tabs[(i + (e.key === "ArrowRight" ? 1 : tabs.length - 1)) % tabs.length], true);
+      }
+    });
+  });
+  $$(".menu__see").forEach(function (a) {
+    a.addEventListener("click", function () { selectTab($("#tab-" + a.dataset.tab)); });
+  });
+
+  /* hand a pick from the menus to the booking form */
+  function toForm(service, details) {
+    if (!form) return;
+    var r = $("input[name=service][value='" + service + "']", form);
+    if (r) { r.checked = true; setService(service); }
+    var d = $("#details");
+    /* replace the last pick we inserted, keep anything the visitor typed */
+    var prev = d.dataset.auto || "";
+    var typed = prev && d.value.indexOf(prev) === 0 ? d.value.slice(prev.length).replace(/^\n+/, "") : d.value;
+    d.value = details + (typed ? "\n\n" + typed : "");
+    d.dataset.auto = details;
+    $("#book").scrollIntoView({ behavior: reduce ? "auto" : "smooth" });
+    setTimeout(function () { var n = $("input[name=name]", form); if (n) n.focus({ preventScroll: true }); }, 700);
+    toast("Added to your request. Fill in your info and send it.");
+  }
+
+  /* ---------- Meal prep: build my week ---------- */
+  var weekList = $("#weekList"), weekGo = $("#weekGo");
+  if (weekList) {
+    var prepBoxes = $$("input[name=prep]");
+    var renderWeek = function () {
+      var picked = prepBoxes.filter(function (b) { return b.checked; });
+      weekList.innerHTML = picked.length
+        ? picked.map(function (b) { return "<li>" + b.closest(".dish").querySelector(".dish__name").textContent + "</li>"; }).join("")
+        : "<li class='week__empty'>Nothing yet. Tap a plate to add it.</li>";
+      weekGo.disabled = !picked.length;
+      pillCount.textContent = picked.length;
+      updatePill();
+      weekGo.textContent = picked.length ? "Send my " + picked.length + " pick" + (picked.length > 1 ? "s" : "") + " to Chef Lo" : "Send my picks to Chef Lo";
+    };
+    var pill = $("#weekPill"), pillCount = $("#weekCount"), weekBox = $(".week"), weekSeen = false;
+    var updatePill = function () {
+      var n = +pillCount.textContent;
+      var panelOpen = !$("#panel-prep").hidden;
+      pill.hidden = !(n && panelOpen && !weekSeen && innerWidth <= 900);
+    };
+    if ("IntersectionObserver" in window) {
+      new IntersectionObserver(function (es) { weekSeen = es[0].isIntersecting; updatePill(); }, { threshold: .4 }).observe(weekBox);
+    }
+    pill.addEventListener("click", function () { weekBox.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "center" }); });
+    addEventListener("resize", updatePill);
+    tabs.forEach(function (t) { t.addEventListener("click", updatePill); });
+    prepBoxes.forEach(function (b) { b.addEventListener("change", renderWeek); });
+    weekGo.addEventListener("click", function () {
+      var picked = prepBoxes.filter(function (b) { return b.checked; }).map(function (b) { return "- " + b.value; });
+      toForm("Meal prep", "Meal prep picks:\n" + picked.join("\n"));
+    });
+  }
+
+  /* ---------- Catering: start with a package ---------- */
+  $$(".pkg__go").forEach(function (b) {
+    b.addEventListener("click", function () {
+      toForm(b.dataset.service || "Catering", "Starting with: " + b.dataset.pkg);
+    });
+  });
+
   /* ---------- Reels: play while on screen ---------- */
   var ext = (function () { var v = document.createElement("video"); return v.canPlayType && v.canPlayType('video/webm; codecs="vp9"') ? "webm" : "mp4"; })();
   var reels = $$(".reel");

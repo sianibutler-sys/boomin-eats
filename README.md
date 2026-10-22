@@ -52,6 +52,14 @@ Prices and items live in the `#truck` section of `index.html`. The countdown dat
 - Watch me cook: kitchen clips play only while on screen. Tapping one opens it large with a link to the full reel.
 - The service links ("Book a private dinner", etc.) preselect that service in the booking form and adjust its fields.
 
+## Menus section (meal prep and catering)
+
+Both tabs live in `#menus` in `index.html`.
+
+- Meal prep: each plate is a `<label class="dish">` inside a `prep__group`. Copy one, change the `value` (what lands in the booking form), the name and the sides. Add an `<img>` if there's a photo; otherwise the burst dot shows.
+- Catering: each package is an `<article class="pkg">`. `data-pkg` on its button is the text that lands in the booking form. `pkg--lead` is the featured one.
+- Every dish and package menu comes from her Instagram posts. The Boomin Spread is the 2021 birthday menu she posted, and The Plated Night is her 2023 Valentine's dinner menu. Packages have no prices yet; every quote is custom.
+
 ## Adding a new reel clip
 
 Cut a 4–8 second stretch with no text on screen, strip the audio (her reels use licensed music), and export:
