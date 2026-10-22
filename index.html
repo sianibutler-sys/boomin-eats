@@ -16,9 +16,8 @@
   <meta name="theme-color" content="#2D2A26">
   <link rel="icon" href="images/logo-square.png">
   <link rel="apple-touch-icon" href="images/logo-square.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&display=swap" rel="stylesheet">
+  <link rel="preload" as="font" type="font/woff2" href="fonts/alfa-slab-one.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="fonts/bricolage-grotesque.woff2" crossorigin>
   <link rel="preload" as="image" href="images/logo.webp">
   <link rel="stylesheet" href="styles.css">
   <script>
@@ -273,6 +272,11 @@
 
     <section class="story" id="story" aria-labelledby="story-title">
       <div class="story__intro">
+        <figure class="portrait">
+          <svg class="portrait__burst" viewBox="0 0 200 200" aria-hidden="true"><polygon points="100,4 116,52 160,22 146,72 196,70 156,102 194,134 144,134 160,184 116,152 100,198 84,152 40,184 56,134 6,134 44,102 4,70 54,72 40,22 84,52"/></svg>
+          <img src="images/chef-lo.webp" alt="Chef Lo in a restaurant kitchen holding a plate of creamy parm shrimp chips" width="720" height="900" loading="lazy">
+          <figcaption>Chef Lo, plating creamy parm shrimp chips</figcaption>
+        </figure>
         <h2 id="story-title" class="section-title">Chef Lo</h2>
         <p>I started Boomin Eats in the summer of 2020 with a new logo, a short menu and preorders through my DMs. Plates went out for pickup across the DMV. People came back for the honey cajun and the mac, then started asking me to cook their events.</p>
         <p>Six years later I’m cooking in rooms I used to pray to be in. I still prep every plate like it’s going to a regular, because most of them are.</p>
@@ -347,10 +351,29 @@
   </main>
 
   <footer class="foot">
-    <img src="images/logo.webp" alt="Boomin Eats" width="200" height="126" loading="lazy">
-    <p class="foot__line">Come Hungry. Leave Boomin.</p>
-    <p>Chef Lo<br>DC, MD and VA<br><a href="https://www.instagram.com/boomineats/">@boomineats</a></p>
-    <p class="foot__credit">Site by Siani Creates</p>
+    <div class="foot__finale">
+      <div class="foot__mark">
+        <svg class="foot__burst" viewBox="0 0 200 200" aria-hidden="true"><polygon class="b3" points="100,0 113,49 156,13 142,70 200,66 154,101 198,138 141,132 158,190 113,152 100,200 87,152 42,190 59,132 2,138 46,101 0,66 58,70 44,13 87,49"/><polygon class="b2" points="100,14 111,56 147,28 136,76 184,74 146,101 182,128 135,124 148,172 111,144 100,186 89,144 52,172 65,124 18,128 54,101 16,74 64,76 53,28 89,56"/></svg>
+        <img src="images/logo.webp" alt="Boomin Eats" width="430" height="270" loading="lazy">
+      </div>
+      <p class="foot__line">Come Hungry.<br>Leave Boomin.</p>
+      <div class="foot__actions">
+        <a class="btn btn--fire" href="#book">Book Chef Lo</a>
+        <a class="btn btn--line" href="https://ig.me/m/boomineats">DM a truck order</a>
+      </div>
+    </div>
+    <nav class="foot__nav" aria-label="Footer">
+      <a href="#truck">Truck menu</a>
+      <a href="#services">Services</a>
+      <a href="#kitchen">Watch</a>
+      <a href="#story">Chef Lo</a>
+      <a href="https://www.instagram.com/boomineats/">Instagram</a>
+      <a href="mailto:hello@boomineats.com">Email</a>
+    </nav>
+    <div class="foot__base">
+      <span>Boomin Eats. Private chef, catering, meal prep and pop-ups in DC, MD and VA.</span>
+      <span class="by-sc">Site by <img src="images/siani-creates.png" alt="Siani Creates" width="35" height="13"></span>
+    </div>
   </footer>
 
   <nav class="dock" aria-label="Quick actions">
